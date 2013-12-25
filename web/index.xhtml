@@ -1,14 +1,83 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Authentification</title>
+        <link type="image/x-icon" rel="shortcut icon" href="./resources/images/favicon.ico" />
+        <link type="text/css" href="./resources/css/authen.css" rel="stylesheet" />
     </h:head>
     <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+        <div class="wrapper">
+            <div class="dbf-header-bar  centered">
+                <div class="header content clearfix">
+                    <!--<img src="" class="logo" alt="logo">-->
+                </div>
+            </div>
+            <div class="main content clearfix">
+                <div class="banner">
+                    <h1>
+                        <!-- Progiciel d’aide à la Gestion Budgétaire et Financière de la PNC-->
+                    </h1>
+                    <h2>
+                        <!-- Connectez-vous pour accéder au Progiciel de la DBF-->
+                    </h2>
+                </div>
+                <p:ajaxStatus onstart="PF('statusDialog').show();" onsuccess="PF('statusDialog').hide();"/>  
+                <p:dialog modal="true" widgetVar="statusDialog" header="Exécution en cours ..."   
+                          draggable="false" closable="false" resizable="false">
+                    <p:graphicImage value="resources/images/ajaxloadingbar.gif" />
+                </p:dialog>
+                <p:growl id="growl" showDetail="true" autoUpdate="true"/>
+                <div class="card signin-card clearfix">
+                    <img alt="" src="resources/images/avatar.png" class="profile-img" />
+                    <h:form id="loginform" >
+                        <p:messages id="messagesSingIn" closable="true" autoUpdate="true" />
+                        <p:inputText id="username" value="#{signInBean.userName}" required="true" 
+                                     requiredMessage="Identifiant requis" />
+                        <p:watermark for="username" value="Nom d\'utilisateur" />
+
+                        <p:password id="password" value="#{signInBean.password}" required="true" 
+                                    requiredMessage="Mot de passe requis" />
+                        <p:watermark for="password" value="Mot de passe" />
+
+                        <p:commandButton id="SignIn" value="Connexion" action="#{signInBean.logInUser()}" 
+                                         update=":growl,loginform" style="width: 274px;">
+                        </p:commandButton>
+                        <a href="#" target="_blank" style="font-size: 12px;margin-top: 6px;
+                           float: right;text-decoration: none;">Besoin d'aide?</a>
+                    </h:form>
+                </div>
+                <div class="copyright-dbf">
+                    <p style="font-size: 11px;">
+                        Copyright © 2013 Police Nationale Congolaise. Tous Droits Réservés.
+                    </p>
+                </div>
+            </div>
+            <h:form>
+                <div class="dbf-footer-bar">
+                    <div class="footer content clearfix">
+                        <ul id="footer-list">
+                            <li>
+                                Ce logiciel a été développé par la fondation 
+                                <a href="#">NTIC pour Tous</a> et la firme
+                                <a href="http://www.softwaresolution-rdc.com" target="_blank">
+                                    Software Solution RDC</a> &reg;
+                            </li>
+                        </ul>
+                        <div style="display: inline;" id="lang-vis-control">
+                            <span class="lang-chooser-wrap" id="lang-chooser-wrap">
+                                <select name="lang-chooser" class="lang-chooser" id="lang-chooser">
+                                    <option selected="selected" value="fr">
+                                        ‪Français
+                                    </option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
     </h:body>
 </html>
-
