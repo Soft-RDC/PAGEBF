@@ -10,7 +10,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.el.ValueBinding;
 import org.primefaces.model.menu.DefaultMenuItem;
 import org.primefaces.model.menu.DefaultMenuModel;
-import org.primefaces.model.menu.DefaultSubMenu;
 import org.primefaces.model.menu.MenuModel;
 
 @ManagedBean
@@ -31,6 +30,9 @@ public class HomeBean {
             DefaultMenuItem item = new DefaultMenuItem(res.getString("module_name"));
             item.setCommand(res.getString("command"));
             item.setIcon(res.getString("icon"));
+            item.setAjax(false);
+            item.setOnclick("selectComponentLink(this)");
+            item.setStyleClass("#{navigationContext.getMenuitemStyleClass('" + res.getString("command") + "')}");
             model.addElement(item);
         }
     }

@@ -17,12 +17,7 @@
             <title>Progiciel d’aide à la Gestion Budgétaire et Financière</title>
         </h:head>
         <h:body>
-            <!--<ui:insert name="ajaxErrorHandler"> -->
-            <!-- Enable ajaxErrorHandler -->
-            <!--<pe:ajaxErrorHandler widgetVar="ajaxErrorHandler" button="Hide" buttonOnclick="ajaxErrorHandler.hide();" />
-            <pe:ajaxErrorHandler type="javax.faces.application.ViewExpiredException" button="Reload" buttonOnclick="document.location.href=document.location.href;" />
-        </ui:insert>-->
-
+            <p:ajaxStatus onstart="PF('statusDialog').show();" onsuccess="PF('statusDialog').hide();"/>
             <p:layout id="fpl" widgetVar="fullLayoutWidget" fullPage="true">
                 <p:layoutUnit position="north">
                     <h:form id="headerForm" prependId="false">                        
@@ -57,7 +52,6 @@
             </h:form>
             <ui:insert name="dialogs"/>
             <ui:insert name="resources-app"/>
-            <ui:insert name="statusDialog"/>
         </h:body>
     </f:view>
 </html>

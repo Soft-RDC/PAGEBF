@@ -1,6 +1,6 @@
 
-function selectComponentLink(link) {
-    jQuery("#componentList").find(".ui-state-active").removeClass("ui-state-active");
+function selectModuleLink(link) {
+    jQuery("#moduleList").find(".ui-state-active").removeClass("ui-state-active");
     if (link) {
         jQuery(link).addClass("ui-state-active");
     }
