@@ -1,33 +1,36 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-
-    <body>
-
-        <ui:composition template="./../templates/masterLayout.xhtml">
-
-            <ui:define name="metadata">
-                metadata
-            </ui:define>
-
-            <ui:define name="ajaxErrorHandler">
-                ajaxErrorHandler
-            </ui:define>
-
-            <ui:define name="header">
-                header
-            </ui:define>
-
-            <ui:define name="center">
-                center
-            </ui:define>
-
-            <ui:define name="footer">
-                footer
-            </ui:define>
-
-        </ui:composition>
-
-    </body>
+    <ui:composition template="./../templates/showcaseLayout.xhtml">
+        <ui:define name="centerContent">
+            <h:panelGroup layout="block" class="title ui-widget-header ui-corner-all"
+                          style="padding: 8px; font-size: 16px !important; text-align: center;">
+                <h:outputText value="Bienvenu à la Gestion Budgétaire et Financière de la PNC"/>
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="centerContent" style="font-size: 14px;">
+                <h:panelGrid columns="2">
+                    <h:graphicImage library="images" name="components.png" alt="PrimeFaces Extensions"/>
+                    <h:panelGroup layout="block" style="padding-left: 25px; line-height: 20px; text-align: justify">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod 
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
+                        cillum dolore eu fugiat nulla pariatur.
+                        <p/>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod 
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
+                        cillum dolore eu fugiat nulla pariatur.
+                        <p/>
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+                        deserunt mollit anim id est laborum.
+                    </h:panelGroup>
+                </h:panelGrid>
+            </h:panelGroup>
+        </ui:define>
+        <ui:define name="subModule">
+            <h:outputText value="Veuillez selectionner un module"/>
+        </ui:define>
+    </ui:composition>
 </html>

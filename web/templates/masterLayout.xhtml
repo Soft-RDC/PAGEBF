@@ -3,30 +3,29 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:pe="http://primefaces.org/ui/extensions">
+      xmlns:p="http://primefaces.org/ui">
     <f:view contentType="text/html" locale="en">
         <ui:insert name="metadata"/>
-        <head title="PrimeFaces Extensions - ShowCase" shortcutIcon="#{request.contextPath}/favicon.ico">
+        <h:head>
             <f:facet name="first">
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
                 <meta http-equiv="pragma" content="no-cache"/>
                 <meta http-equiv="cache-control" content="no-cache"/>
                 <meta http-equiv="expires" content="0"/>
             </f:facet>
-        </head>
+            <link type="image/x-icon" rel="shortcut icon" href="#{request.contextPath}/favicon.ico" />
+            <title>Progiciel d’aide à la Gestion Budgétaire et Financière</title>
+        </h:head>
         <h:body>
-            <ui:insert name="ajaxErrorHandler">
-                <!-- Enable ajaxErrorHandler -->
-                <pe:ajaxErrorHandler widgetVar="ajaxErrorHandler" button="Hide" buttonOnclick="ajaxErrorHandler.hide();" />
-                <pe:ajaxErrorHandler type="javax.faces.application.ViewExpiredException" button="Reload" buttonOnclick="document.location.href=document.location.href;" />
-            </ui:insert>
+            <!--<ui:insert name="ajaxErrorHandler"> -->
+            <!-- Enable ajaxErrorHandler -->
+            <!--<pe:ajaxErrorHandler widgetVar="ajaxErrorHandler" button="Hide" buttonOnclick="ajaxErrorHandler.hide();" />
+            <pe:ajaxErrorHandler type="javax.faces.application.ViewExpiredException" button="Reload" buttonOnclick="document.location.href=document.location.href;" />
+        </ui:insert>-->
 
-            <p:layout id="fpl" widgetVar="fullLayoutWidget">
-                <pe:javascript event="resize" execute="#{resizeFunction}" disabled="#{empty resizeFunction}"/>
-
+            <p:layout id="fpl" widgetVar="fullLayoutWidget" fullPage="true">
                 <p:layoutUnit position="north">
-                    <h:form id="headerForm" prependId="false">
+                    <h:form id="headerForm" prependId="false">                        
                         <ui:insert name="header"/>
                     </h:form>
                 </p:layoutUnit>
@@ -38,6 +37,27 @@
                 </h:form>
             </p:layout>
 
+            <h:form id="themeForm" prependId="false">
+                <h:panelGrid columns="2" styleClass="themeRoller" columnClasses="themeText,themeSelect">
+                    <h:outputText value="Theme"/>
+                    <p:selectOneMenu id="themeSelectMenu" value="#{userSettings.currentTheme}" var="theme" effect="drop"
+                                     onchange="$('#themeForm').submit()">
+                        <f:selectItems var="t"
+                                       value="#{userSettings.availableThemes}"
+                                       itemLabel="#{t.name}"
+                                       itemValue="#{t}"/>
+                        <p:column>
+                            <p:graphicImage value="#{theme.image}" rendered="${not empty theme.image}"/>
+                        </p:column>
+                        <p:column>
+                            #{theme.name}
+                        </p:column>
+                    </p:selectOneMenu>
+                </h:panelGrid>
+            </h:form>
+            <ui:insert name="dialogs"/>
+            <ui:insert name="resources-app"/>
+            <ui:insert name="statusDialog"/>
         </h:body>
     </f:view>
 </html>

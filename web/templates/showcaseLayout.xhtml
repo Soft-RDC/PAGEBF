@@ -1,138 +1,48 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-<ui:composition template="/templates/masterLayout.xhtml">
-    <ui:define name="resources-app">
-        <ui:include src="/sections/shared/resources-app.xhtml"/>
-        <h:outputStylesheet library="syntaxhighlighter" name="styles/syntaxhighlighter.css"/>
-        <h:outputScript library="syntaxhighlighter" name="scripts/shCore.js" target="body"/>
-        <h:outputScript library="syntaxhighlighter" name="scripts/shBrushXml.js" target="body"/>
-        <h:outputScript library="syntaxhighlighter" name="scripts/shBrushJava.js" target="body"/>
-        <h:outputScript library="syntaxhighlighter" name="scripts/shBrushCss.js" target="body"/>
-        <h:outputScript library="syntaxhighlighter" name="scripts/shBrushJScript.js" target="body"/>
-        <h:outputScript id="syntaxhighlighterInit" target="body">
-            dp.SyntaxHighlighter.ClipboardSwf = '#{request.contextPath}/resources/syntaxhighlighter/scripts/clipboard.swf';
-            dp.SyntaxHighlighter.HighlightAll('code');
-        </h:outputScript>
-    </ui:define>
-    <ui:define name="header">
-        <ui:include src="/sections/system/header.xhtml"/>
-    </ui:define>
-    <ui:define name="center">
-        <p:layoutUnit position="center">
-            <ui:insert name="centerContent"/>
-        </p:layoutUnit>
-        <p:layoutUnit position="west">
-            <f:facet name="header">
-                <h:outputText value="Components and more"/>
-            </f:facet>
-            <p:menu id="componentList">
-                <p:menuitem value="ClientBehaviours" styleClass="#{navigationContext.getMenuitemStyleClass('clientBehaviours')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('clientBehaviours')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/clientBehaviours.jsf"/>
-                <p:menuitem value="Converters" styleClass="#{navigationContext.getMenuitemStyleClass('converters')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('converters')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/converters.jsf"/>
-                <p:menuitem value="Functions, Utils" styleClass="#{navigationContext.getMenuitemStyleClass('utils')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('utils')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/utils.jsf"/>                
-                <p:separator/>
-                <p:menuitem value="AjaxErrorHandler" styleClass="#{navigationContext.getMenuitemStyleClass('ajaxErrorHandler')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('ajaxErrorHandler')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/ajaxErrorHandler.jsf"/>
-                <p:menuitem value="BlockUI" styleClass="#{navigationContext.getMenuitemStyleClass('blockUI')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('blockUI')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/blockUI.jsf"/>
-                <p:menuitem value="CKEditor" styleClass="#{navigationContext.getMenuitemStyleClass('ckEditor')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('ckEditor')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/ckEditor.jsf"/>
-                <p:menuitem value="CodeMirror" styleClass="#{navigationContext.getMenuitemStyleClass('codeMirror')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('codeMirror')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/codeMirror.jsf"/>
-                <p:menuitem value="DynaForm" styleClass="#{navigationContext.getMenuitemStyleClass('dynaForm')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('dynaForm')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/dynaForm.jsf"/>
-                <p:menuitem value="FluidGrid" styleClass="#{navigationContext.getMenuitemStyleClass('fluidGrid')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('fluidGrid')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/fluidGrid.jsf"/>
-                <p:menuitem value="Exporter" styleClass="#{navigationContext.getMenuitemStyleClass('exporter')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('exporter')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/exporter.jsf"/>
-                <p:menuitem value="ImageAreaSelect" styleClass="#{navigationContext.getMenuitemStyleClass('imageAreaSelect')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('imageAreaSelect')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/imageAreaSelect.jsf"/>
-                <p:menuitem value="ImageRotateAndResize"
-                            styleClass="#{navigationContext.getMenuitemStyleClass('imageRotateAndResize')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('imageRotateAndResize')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/imageRotateAndResize.jsf"/>
-                <p:menuitem value="InputNumber"
-                            styleClass="#{navigationContext.getMenuitemStyleClass('inputNumber')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('inputNumber')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/inputNumber.jsf"/>
-                <p:menuitem value="KeyFilter" styleClass="#{navigationContext.getMenuitemStyleClass('keyFilter')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('keyFilter')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/keyFilter.jsf"/>
-                <p:menuitem value="Layout" styleClass="#{navigationContext.getMenuitemStyleClass('layout')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('layout')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/layout.jsf"/>
-                <p:menuitem value="MasterDetail" styleClass="#{navigationContext.getMenuitemStyleClass('masterDetail')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('masterDetail')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/masterDetail.jsf"/>
-                <p:menuitem value="RemoteCommand" styleClass="#{navigationContext.getMenuitemStyleClass('remoteCommand')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('remoteCommand')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/remoteCommand.jsf"/>
-				<p:menuitem value="Spotlight" styleClass="#{navigationContext.getMenuitemStyleClass('spotlight')}"
-							icon="#{technicalInfo.getMenuitemIconStyleClass('spotlight')}"
-							onclick="selectComponentLink(this)" ajax="false" url="/views/spotlight.jsf"/>
-				<p:menuitem value="TimePicker" styleClass="#{navigationContext.getMenuitemStyleClass('timePicker')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('timePicker')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/timePicker.jsf"/>
-                <p:menuitem value="Timeline" styleClass="#{navigationContext.getMenuitemStyleClass('timeline')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('timeline')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/timeline.jsf"/>
-                <p:menuitem value="Tooltip" styleClass="#{navigationContext.getMenuitemStyleClass('tooltip')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('tooltip')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/tooltip.jsf"/>
-                <p:menuitem value="TriStateCheckbox" styleClass="#{navigationContext.getMenuitemStyleClass('triStateCheckbox')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('triStateCheckbox')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/triStateCheckbox.jsf"/>
-                <p:menuitem value="TriStateManyCheckbox"
-                            styleClass="#{navigationContext.getMenuitemStyleClass('triStateManyCheckbox')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('triStateManyCheckbox')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/triStateManyCheckbox.jsf"/>
-                <p:menuitem value="QRCode"
-                            styleClass="#{navigationContext.getMenuitemStyleClass('qrCode')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('qrCode')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/qrCode.jsf"/>
-                <p:menuitem value="Waypoint"
-                            styleClass="#{navigationContext.getMenuitemStyleClass('waypoint')}"
-                            icon="#{technicalInfo.getMenuitemIconStyleClass('waypoint')}"
-                            onclick="selectComponentLink(this)" ajax="false" url="/views/waypoint.jsf"/>
-            </p:menu>
-            <p:tooltip value="New component in the current release"for="@(.ui-icon-new-comp)"/>
-            <p:tooltip value="Updated component / use case in the current release" for="@(.ui-icon-updated-comp)"/>
-        </p:layoutUnit>
-        <p:layoutUnit position="east">
+    <ui:composition template="./masterLayout.xhtml">
+        <ui:define name="resources-app">
+            <ui:include src="/sections/shared/resources-app.xhtml"/>
+        </ui:define>
+        <ui:define name="header">
+            <ui:include src="/sections/system/header.xhtml"/>
+        </ui:define>
+        <ui:define name="statusDialog">
+            <h:form id="statusDialogForm" prependId="false">
+                <p:ajaxStatus onstart="PF('statusDialog').show();" onsuccess="PF('statusDialog').hide();"/>
+                <ui:include src="/sections/shared/statusDialog.xhtml"/>
+            </h:form>
+        </ui:define>
+        <ui:define name="center">
             <p:layoutUnit position="center">
-                <f:facet name="header">
-                    <h:outputText value="Use Cases"/>
-                </f:facet>
-                <ui:insert name="useCases"/>
+                <ui:insert name="centerContent"/>
             </p:layoutUnit>
-            <p:layoutUnit position="south">
-                <ui:insert name="docuTable"/>
+            <p:layoutUnit position="west">
+                <h:panelGroup layout="block" class="title ui-widget-header ui-corner-all"
+                              style="padding: 5px; margin-bottom: 5px; font-size: 12px !important; 
+                              text-align: center;">
+                    <h:outputText value="Modules"/>
+                </h:panelGroup>
+                <p:menu id="componentList" model="#{homeBean.model}" style="width: 160px;"/>
             </p:layoutUnit>
-        </p:layoutUnit>
-    </ui:define>
-    <ui:define name="footer">
-        <ui:include src="/sections/system/footer.xhtml"/>
-    </ui:define>
-    <ui:define name="dialogs">
-        <h:form id="dialogForm" prependId="false">
-            <ui:include src="/sections/shared/dialogs.xhtml"/>
-        </h:form>
-    </ui:define>
-</ui:composition>
+            <p:layoutUnit position="east">
+                <h:panelGroup layout="block" class="title ui-widget-header ui-corner-all"
+                              style="padding: 5px; margin-bottom: 10px; font-size: 12px !important; 
+                              text-align: center;">
+                    <h:outputText value="Sous Modules"/>
+                </h:panelGroup>
+                <ui:insert name="subModule"/>
+            </p:layoutUnit>
+        </ui:define>
+        <ui:define name="footer">
+            <ui:include src="/sections/system/footer.xhtml"/>
+        </ui:define>
+        <ui:define name="dialogs">
+            <h:form id="dialogForm" prependId="false">
+                <ui:include src="/sections/shared/dialogs.xhtml"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
 </html>

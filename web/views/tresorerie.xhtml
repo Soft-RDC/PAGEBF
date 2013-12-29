@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="./../templates/showcaseLayout.xhtml">
+        <ui:define name="centerContent">
+            <h:panelGroup layout="block" class="title ui-widget-header ui-corner-all"
+                          style="padding: 8px; font-size: 16px !important; text-align: center;">
+                <h:outputText value="Gestion de la Trésorerie"/>
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="centerContent">
+                Content goes here
+            </h:panelGroup>
+        </ui:define>
+        <ui:define name="subModule">
+            <!--<p:menu model="#{homeBean.model}" style="width: 160px;"/>-->
+        </ui:define>
+    </ui:composition>
+</html>
