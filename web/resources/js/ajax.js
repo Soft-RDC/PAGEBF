@@ -21,7 +21,7 @@ function ajaxOnSuccessIndicator() {
 
     // check the counter
     if (typeof requestCount !== 'undefined') {
-        if (requestCount == 1) {
+        if (requestCount === 1) {
             // hide indicators
             document.body.style.cursor = 'auto';
             $("#ajaxIndicatorActive").css("display", "none");
