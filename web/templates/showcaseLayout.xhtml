@@ -1,6 +1,5 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <ui:composition template="./masterLayout.xhtml">
@@ -15,10 +14,11 @@
                 <ui:insert name="centerContent"/>
             </p:layoutUnit>
             <p:layoutUnit position="west">
-                <f:facet name="header">
+                <h:panelGroup layout="block" class="ui-widget-header ui-corner-top pe-layout-pane-header"
+                              style="padding: 5px; margin-bottom: 10px; font-size: 12px !important; 
+                              text-align: center;">
                     <h:outputText value="Fonctionnalités"/>
-                </f:facet>
-<!-- <p:menu id="componentList" model="#{homeBean.model}"/> -->
+                </h:panelGroup>
                 <p:menu id="componentList">
                     <p:menuitem value="Accueil" style="font-size: 13px;padding: 4px;"
                                 styleClass="#{navigationContext.getMenuitemStyleClass('home')}"
@@ -35,7 +35,7 @@
                                 icon="ui-icon ui-icon-refresh"
                                 onclick="selectModuleLink(this)" action="executingBudget"/>
                     <p:separator />
-                    <p:menuitem value="Suivi des Investissements" style="font-size: 13px;padding: 4px;"
+                    <p:menuitem value="Suivi d'Investissements" style="font-size: 13px;padding: 4px;"
                                 styleClass="#{navigationContext.getMenuitemStyleClass('investissement')}"
                                 icon="ui-icon ui-icon-transferthick-e-w"
                                 onclick="selectModuleLink(this)" action="investissement"/>
@@ -81,7 +81,7 @@
                 <h:panelGroup layout="block" class="ui-widget-header ui-corner-top pe-layout-pane-header"
                               style="padding: 5px; margin-bottom: 10px; font-size: 12px !important; 
                               text-align: center;">
-                    <h:outputText value="Fonctionnalités"/>
+                    <h:outputText value="Opérations"/>
                 </h:panelGroup>
                 <ui:insert name="subModule"/>
             </p:layoutUnit>

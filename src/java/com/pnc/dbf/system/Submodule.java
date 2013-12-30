@@ -23,6 +23,7 @@ public class Submodule {
             DefaultMenuItem item = new DefaultMenuItem(res.getString("submodule_name"));
             item.setCommand(res.getString("command"));
             item.setIcon(res.getString("icon"));
+            item.setStyle("font-size: 13px;padding: 4px;");
             modelSubmodule.addElement(item);
         }
         return modelSubmodule;
