@@ -1,0 +1,92 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="./masterLayout.xhtml">
+        <ui:define name="resources-app">
+            <ui:include src="/sections/shared/resources-app.xhtml"/>
+            <h:outputStylesheet library="syntaxhighlighter" name="styles/syntaxhighlighter.css"/>
+            <h:outputScript library="syntaxhighlighter" name="scripts/shCore.js" target="body"/>
+            <h:outputScript library="syntaxhighlighter" name="scripts/shBrushXml.js" target="body"/>
+            <h:outputScript library="syntaxhighlighter" name="scripts/shBrushJava.js" target="body"/>
+            <h:outputScript library="syntaxhighlighter" name="scripts/shBrushCss.js" target="body"/>
+            <h:outputScript library="syntaxhighlighter" name="scripts/shBrushJScript.js" target="body"/>
+            <h:outputScript id="syntaxhighlighterInit" target="body">
+                dp.SyntaxHighlighter.ClipboardSwf = '#{request.contextPath}/resources/syntaxhighlighter/scripts/clipboard.swf';
+                dp.SyntaxHighlighter.HighlightAll('code');
+            </h:outputScript>
+        </ui:define>
+        <ui:define name="header">
+            <ui:include src="/sections/system/header.xhtml"/>
+        </ui:define>
+        <ui:define name="center">
+            <p:layoutUnit position="center">
+                <ui:insert name="centerContent"/>
+            </p:layoutUnit>
+            <p:layoutUnit position="west">
+                <h:panelGroup layout="block" class="title ui-widget-header ui-corner-all"
+                              style="padding: 5px; margin-bottom: 5px; font-size: 12px !important; 
+                              text-align: center;">
+                    <h:outputText value="Modules"/>
+                </h:panelGroup>
+
+<!--<p:menu id="componentList" model="#{homeBean.model}"/> -->
+                <p:menu id="componentList" >
+                    <p:menuitem value="Préparation Budgétaire" style="font-size: 13px;padding: 4px;"
+                                styleClass="#{navigationContext.getMenuitemStyleClass('preparingBudget')}"
+                                icon="ui-icon ui-icon-calculator"
+                                onclick="selectModuleLink(this)" action="preparingBudget"/>
+                    <p:menuitem value="Exécution Budgétaire" style="font-size: 13px;padding: 4px;"
+                                styleClass="#{navigationContext.getMenuitemStyleClass('executingBudget')}"
+                                icon="ui-icon ui-icon-refresh"
+                                onclick="selectModuleLink(this)" action="executingBudget"/>
+                    <p:menuitem value="Suivi des Investissements" style="font-size: 13px;padding: 4px;"
+                                styleClass="#{navigationContext.getMenuitemStyleClass('investissement')}"
+                                icon="ui-icon ui-icon-transferthick-e-w"
+                                onclick="selectModuleLink(this)" action="investissement"/>
+                    <p:menuitem value="Gestion des Recettes" style="font-size: 13px;padding: 4px;"
+                                styleClass="#{navigationContext.getMenuitemStyleClass('recettes')}"
+                                icon="ui-icon ui-icon-suitcase"
+                                onclick="selectModuleLink(this)" action="recettes"/>
+                    <p:menuitem value="Gestion de la trésorerie" style="font-size: 13px;padding: 4px;"
+                                styleClass="#{navigationContext.getMenuitemStyleClass('tresorerie')}"
+                                icon="ui-icon ui-icon-cart"
+                                onclick="selectModuleLink(this)" action="tresorerie"/>
+                    <p:menuitem value="Gestion de documents" style="font-size: 13px;padding: 4px;"
+                                styleClass="#{navigationContext.getMenuitemStyleClass('ged')}"
+                                icon="ui-icon ui-icon-note"
+                                onclick="selectModuleLink(this)" action="ged"/>
+                    <p:menuitem value="Reporting et Statistiques"  style="font-size: 13px;padding: 4px;"
+                                styleClass="#{navigationContext.getMenuitemStyleClass('reporting')}"
+                                icon="ui-icon ui-icon-print"
+                                onclick="selectModuleLink(this)" action="reporting"/>
+                    <p:menuitem value="Administration Technique" style="font-size: 13px;padding: 4px;"
+                                styleClass="#{navigationContext.getMenuitemStyleClass('adminTech')}"
+                                icon="ui-icon ui-icon-gear"
+                                onclick="selectModuleLink(this)" action="adminTech"/>
+                    <p:menuitem value="Configuration" style="font-size: 13px;padding: 4px;"
+                                styleClass="#{navigationContext.getMenuitemStyleClass('configuration')}"
+                                icon="ui-icon ui-icon-wrench"
+                                onclick="selectModuleLink(this)" action="configuration"/>
+                </p:menu>
+            </p:layoutUnit>
+            <p:layoutUnit position="east">
+                <h:panelGroup layout="block" class="title ui-widget-header ui-corner-all"
+                              style="padding: 5px; margin-bottom: 10px; font-size: 12px !important; 
+                              text-align: center;">
+                    <h:outputText value="Sous Modules"/>
+                </h:panelGroup>
+                <ui:insert name="subModule"/>
+            </p:layoutUnit>
+        </ui:define>
+        <ui:define name="footer">
+            <ui:include src="/sections/system/footer.xhtml"/>
+        </ui:define>
+        <ui:define name="dialogs">
+            <h:form id="dialogForm" prependId="false">
+                <ui:include src="/sections/shared/dialogs.xhtml"/>
+                <ui:include src="/sections/shared/statusDialog.xhtml"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

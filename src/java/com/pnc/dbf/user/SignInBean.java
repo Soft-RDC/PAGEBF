@@ -58,7 +58,7 @@ public class SignInBean implements Serializable {
                                     + "Vous devez changer votre mot de passe car vous utilisez encore celui "
                                     + "reçu auprès de l'administrateur"));
                         }
-                        return "home/home";
+                        return "views/home";
                     } else {
                         int attempt = getAttempt() + 1;
                         if ((3 - attempt) <= 0) {
