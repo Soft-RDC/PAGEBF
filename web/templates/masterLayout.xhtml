@@ -32,9 +32,20 @@
                 </h:form>
             </p:layout>
 
+            <h:form>
+                <h:panelGrid columns="1" styleClass="logoutRoller">
+                    <p:splitButton value="Déconnexion" onclick="PF('SignOutConfirm').show();" 
+                                   icon="ui-icon-extlink">  
+                        <p:menuitem value="Editer #{signInBean.userName}" icon="ui-icon-pencil"/>
+                        <p:separator />  
+                        <p:menuitem value="Accueil" action="home" icon="ui-icon-home" />  
+                    </p:splitButton>
+                </h:panelGrid>
+            </h:form>
+
             <h:form id="themeForm" prependId="false">
                 <h:panelGrid columns="2" styleClass="themeRoller" columnClasses="themeText,themeSelect">
-                    <h:outputText value="Theme"/>
+                    <h:outputText value="Thème"/>
                     <p:selectOneMenu id="themeSelectMenu" value="#{userSettings.currentTheme}" var="theme" effect="drop"
                                      onchange="$('#themeForm').submit()">
                         <f:selectItems var="t"

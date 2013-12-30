@@ -13,7 +13,7 @@
             </h:panelGroup>
         </ui:define>
         <ui:define name="subModule">
-            <!--<p:menu model="#{homeBean.model}" style="width: 160px;"/>-->
+            <p:menu model="#{submodule.getSubmodules(5)}" />
         </ui:define>
     </ui:composition>
 </html>

@@ -1,10 +1,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <ui:composition>
-        <h:panelGrid columns="2">
+        <h:panelGrid columns="6">
             <h:panelGroup styleClass="ui-icon ui-icon-info"/>
-            <h:outputFormat value="Progiciel d’aide à la Gestion Budgétaire et Financière  - Copyright &#169; 2013"/>
+            <h:outputFormat value="Progiciel d’aide à la Gestion Budgétaire et Financière - Copyright &#169; 2013"/>
+            <h:outputText value="|"/>
+            <p:commandLink value="Accueil" action="home"/>
+            <h:outputText value="|"/>
+            <p:commandLink value="Developers" onclick="PF('dlgDevelopers').show();"/>
         </h:panelGrid>
     </ui:composition>
 </html>

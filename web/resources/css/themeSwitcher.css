@@ -1,7 +1,7 @@
 .themeRoller {
 	position: absolute;
 	top: 25px;
-	right: 80px;
+	right: 180px;
 	z-index: 99;
 }
 
@@ -11,7 +11,12 @@
 	vertical-align: middle !important;
 	padding: 0 4px 0 0 !important;
 }
-
+.logoutRoller {
+	position: absolute;
+	top: 25px;
+	right: 3px;
+	z-index: 99;
+}
 #themeSelectMenu_panel {
     width: 160px;
 }

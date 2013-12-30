@@ -1,20 +1,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <ui:composition template="./masterLayout.xhtml">
         <ui:define name="resources-app">
-            <ui:include src="/sections/shared/resources-app.xhtml"/>
-            <h:outputStylesheet library="syntaxhighlighter" name="styles/syntaxhighlighter.css"/>
-            <h:outputScript library="syntaxhighlighter" name="scripts/shCore.js" target="body"/>
-            <h:outputScript library="syntaxhighlighter" name="scripts/shBrushXml.js" target="body"/>
-            <h:outputScript library="syntaxhighlighter" name="scripts/shBrushJava.js" target="body"/>
-            <h:outputScript library="syntaxhighlighter" name="scripts/shBrushCss.js" target="body"/>
-            <h:outputScript library="syntaxhighlighter" name="scripts/shBrushJScript.js" target="body"/>
-            <h:outputScript id="syntaxhighlighterInit" target="body">
-                dp.SyntaxHighlighter.ClipboardSwf = '#{request.contextPath}/resources/syntaxhighlighter/scripts/clipboard.swf';
-                dp.SyntaxHighlighter.HighlightAll('code');
-            </h:outputScript>
+            <ui:include src="/sections/shared/resources-app.xhtml"/>            
         </ui:define>
         <ui:define name="header">
             <ui:include src="/sections/system/header.xhtml"/>
@@ -24,57 +15,73 @@
                 <ui:insert name="centerContent"/>
             </p:layoutUnit>
             <p:layoutUnit position="west">
-                <h:panelGroup layout="block" class="title ui-widget-header ui-corner-all"
-                              style="padding: 5px; margin-bottom: 5px; font-size: 12px !important; 
-                              text-align: center;">
-                    <h:outputText value="Modules"/>
-                </h:panelGroup>
-
+                <f:facet name="header">
+                    <h:outputText value="Fonctionnalités"/>
+                </f:facet>
 <!--<p:menu id="componentList" model="#{homeBean.model}"/> -->
-                <p:menu id="componentList" >
+                <p:menu id="componentList">
+                    <p:menuitem value="Accueil" style="font-size: 13px;padding: 4px;"
+                                styleClass="#{navigationContext.getMenuitemStyleClass('home')}"
+                                icon="ui-icon ui-icon-home"
+                                onclick="selectModuleLink(this)" action="home"/>
+                    <p:separator />
                     <p:menuitem value="Préparation Budgétaire" style="font-size: 13px;padding: 4px;"
                                 styleClass="#{navigationContext.getMenuitemStyleClass('preparingBudget')}"
                                 icon="ui-icon ui-icon-calculator"
                                 onclick="selectModuleLink(this)" action="preparingBudget"/>
+                    <p:separator />
                     <p:menuitem value="Exécution Budgétaire" style="font-size: 13px;padding: 4px;"
                                 styleClass="#{navigationContext.getMenuitemStyleClass('executingBudget')}"
                                 icon="ui-icon ui-icon-refresh"
                                 onclick="selectModuleLink(this)" action="executingBudget"/>
+                    <p:separator />
                     <p:menuitem value="Suivi des Investissements" style="font-size: 13px;padding: 4px;"
                                 styleClass="#{navigationContext.getMenuitemStyleClass('investissement')}"
                                 icon="ui-icon ui-icon-transferthick-e-w"
                                 onclick="selectModuleLink(this)" action="investissement"/>
+                    <p:separator />
                     <p:menuitem value="Gestion des Recettes" style="font-size: 13px;padding: 4px;"
                                 styleClass="#{navigationContext.getMenuitemStyleClass('recettes')}"
                                 icon="ui-icon ui-icon-suitcase"
                                 onclick="selectModuleLink(this)" action="recettes"/>
-                    <p:menuitem value="Gestion de la trésorerie" style="font-size: 13px;padding: 4px;"
+                    <p:separator />
+                    <p:menuitem value="Gestion de la Trésorerie" style="font-size: 13px;padding: 4px;"
                                 styleClass="#{navigationContext.getMenuitemStyleClass('tresorerie')}"
                                 icon="ui-icon ui-icon-cart"
                                 onclick="selectModuleLink(this)" action="tresorerie"/>
-                    <p:menuitem value="Gestion de documents" style="font-size: 13px;padding: 4px;"
+                    <p:separator />
+                    <p:menuitem value="Comptabilité" style="font-size: 13px;padding: 4px;"
+                                styleClass="#{navigationContext.getMenuitemStyleClass('comptabilite')}"
+                                icon="ui-icon ui-icon-disk"
+                                onclick="selectModuleLink(this)" action="comptabilite" disabled="true"/>
+                    <p:separator />
+                    <p:menuitem value="Gestion de Documents" style="font-size: 13px;padding: 4px;"
                                 styleClass="#{navigationContext.getMenuitemStyleClass('ged')}"
                                 icon="ui-icon ui-icon-note"
                                 onclick="selectModuleLink(this)" action="ged"/>
+                    <p:separator />
                     <p:menuitem value="Reporting et Statistiques"  style="font-size: 13px;padding: 4px;"
                                 styleClass="#{navigationContext.getMenuitemStyleClass('reporting')}"
                                 icon="ui-icon ui-icon-print"
                                 onclick="selectModuleLink(this)" action="reporting"/>
+                    <p:separator />
                     <p:menuitem value="Administration Technique" style="font-size: 13px;padding: 4px;"
                                 styleClass="#{navigationContext.getMenuitemStyleClass('adminTech')}"
                                 icon="ui-icon ui-icon-gear"
                                 onclick="selectModuleLink(this)" action="adminTech"/>
+                    <p:separator />
                     <p:menuitem value="Configuration" style="font-size: 13px;padding: 4px;"
                                 styleClass="#{navigationContext.getMenuitemStyleClass('configuration')}"
                                 icon="ui-icon ui-icon-wrench"
                                 onclick="selectModuleLink(this)" action="configuration"/>
+                    <p:separator />
                 </p:menu>
             </p:layoutUnit>
             <p:layoutUnit position="east">
-                <h:panelGroup layout="block" class="title ui-widget-header ui-corner-all"
+                <h:panelGroup layout="block" class="ui-widget-header ui-corner-top pe-layout-pane-header"
                               style="padding: 5px; margin-bottom: 10px; font-size: 12px !important; 
                               text-align: center;">
-                    <h:outputText value="Sous Modules"/>
+                    <h:outputText value="Fonctionnalités"/>
                 </h:panelGroup>
                 <ui:insert name="subModule"/>
             </p:layoutUnit>
@@ -86,6 +93,7 @@
             <h:form id="dialogForm" prependId="false">
                 <ui:include src="/sections/shared/dialogs.xhtml"/>
                 <ui:include src="/sections/shared/statusDialog.xhtml"/>
+                <ui:include src="/sections/shared/signOutConfirm.xhtml"/>
             </h:form>
         </ui:define>
     </ui:composition>
