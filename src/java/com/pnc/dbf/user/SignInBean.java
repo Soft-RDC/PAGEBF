@@ -22,6 +22,7 @@ public class SignInBean implements Serializable {
 
     private String userName;
     private String password;
+    private String firstname, familyname;
     private String profile;
     private int idUser, idProfile;
     private DBConnection dbConnection = new DBConnection();
@@ -51,8 +52,10 @@ public class SignInBean implements Serializable {
                         profile = getProfileDB();
                         setAttempt(0);
                         updateLastVisiteDate();
+                        firstname = res.getString(4);
+                        familyname = res.getString(5);
                         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenu", ""
-                                + "Bonjour " + res.getString(4) + " " + res.getString(5)));
+                                + "Bonjour " + firstname + " " + familyname));
                         if (isNewUser()) {
                             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Changer votre Mot de passe", ""
                                     + "Vous devez changer votre mot de passe car vous utilisez encore celui "
@@ -210,5 +213,21 @@ public class SignInBean implements Serializable {
 
     public void setIdProfile(int idProfile) {
         this.idProfile = idProfile;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getFamilyname() {
+        return familyname;
+    }
+
+    public void setFamilyname(String familyname) {
+        this.familyname = familyname;
     }
 }

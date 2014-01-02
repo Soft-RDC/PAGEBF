@@ -7,7 +7,10 @@
         <h:graphicImage library="images" name="logo.png" styleClass="logo" title="Police Nationale Congolaise"/>
 
         <h:panelGrid columns="1" styleClass="smallNav" columnClasses="smallNavText">
-            <p:commandLink value="Accueil" action="home" />
+            <h:outputLink value="#">
+                <h:outputText value="Bonjour #{signInBean.firstname} #{signInBean.familyname}" 
+                              style="font-weight: bold;"/>
+            </h:outputLink>
         </h:panelGrid>
 
         <p:ajaxStatus styleClass="logo" style="left:80px; width:32px; height:32px; margin-top: 10px;">
