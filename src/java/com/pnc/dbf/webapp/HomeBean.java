@@ -1,4 +1,4 @@
-package com.pnc.dbf.home;
+package com.pnc.dbf.webapp;
 
 import com.pnc.dbf.config.DBConnection;
 import java.sql.ResultSet;

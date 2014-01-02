@@ -1,19 +1,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <ui:composition template="./../templates/showcaseLayout.xhtml">
         <ui:define name="centerContent">
             <h:panelGroup layout="block" class="title ui-widget-header ui-corner-all"
                           style="padding: 8px; font-size: 16px !important; text-align: center;">
-                <h:outputText value="Administration technique - Nouveau Utilisateur"/>
+                <h:outputText value="Administration technique - Nouveau utilisateur"/>
             </h:panelGroup>
             <h:panelGroup layout="block" styleClass="centerContent">
-                Creating new user
+                Content of new user goes here
             </h:panelGroup>
         </ui:define>
         <ui:define name="subModule">
-            <p:menu model="#{submodule.getSubmodules(8)}" />
+            <ui:include src="/sections/adminTech/adminTechChoice.xhtml"/>
         </ui:define>
     </ui:composition>
 </html>
