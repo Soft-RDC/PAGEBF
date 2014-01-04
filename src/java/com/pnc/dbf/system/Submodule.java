@@ -1,16 +1,20 @@
 package com.pnc.dbf.system;
 
 import com.pnc.dbf.config.DBConnection;
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import org.primefaces.model.menu.DefaultMenuItem;
 import org.primefaces.model.menu.DefaultMenuModel;
+import org.primefaces.model.menu.DefaultSeparator;
 import org.primefaces.model.menu.MenuModel;
 
 @ManagedBean
-public class Submodule {
+@SessionScoped
+public class Submodule implements Serializable{
 
     private final DBConnection dbConnection = new DBConnection();
 
@@ -25,6 +29,7 @@ public class Submodule {
             item.setIcon(res.getString("icon"));
             item.setStyle("font-size: 13px;padding: 4px;");
             modelSubmodule.addElement(item);
+            modelSubmodule.addElement(new DefaultSeparator());
         }
         return modelSubmodule;
     }

@@ -170,12 +170,3 @@ div.source {
 .ui-menu {
     border: none !important;
 }
-.ui-icon-new-comp {
-    background-image: url("#{resource['images/new.png']}") !important;
-    margin-right: 3px;
-}
-
-.ui-icon-updated-comp {
-    background-image: url("#{resource['images/updated.png']}") !important;
-    margin-right: 3px;
-}

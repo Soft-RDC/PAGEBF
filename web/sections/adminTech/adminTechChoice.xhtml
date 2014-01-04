@@ -2,10 +2,13 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <ui:composition>
-        <p:menu model="#{submodule.getSubmodules(8)}" />
-        <!--<p:menu id="adminTechList">
-            <p:menuitem value="Nouveau utilisateur" icon="ui-icon ui-icon-person" 
-                        action="addUser"/>
-        </p:menu>-->
+        <!--<p:menu model="#{submodule.getSubmodules(8)}" />-->
+        <p:menu id="adminTechList">
+            <p:menuitem value="Nouveau utilisateur" style="font-size: 13px;padding: 4px;"
+                        icon="ui-icon ui-icon-person" action="/sections/adminTech/addUser"/>
+            <p:separator />
+            <p:menuitem value="Gestion des utilisateurs" style="font-size: 13px;padding: 4px;"
+                        icon="ui-icon ui-icon-person" action="/sections/adminTech/userManager"/>
+        </p:menu>
     </ui:composition>
 </html>
