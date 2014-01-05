@@ -21,7 +21,17 @@
             </p:panel>
             <p:panel>
                 <h:panelGrid columns="1" style="width:40%">  
-                    <p:commandButton type="button" value="Exporter les donnees" icon="ui-icon-check" style="margin:0"/>   
+                    
+                <p:growl id="messages" showDetail="true" />  
+                <p:commandButton value="Exporter les données" icon="ui-icon-check"  actionListener="#{exportdataBean.doExport()}" update="messages">  
+                    <p:confirm header="DBF: Confirmation" message="Voulez-vous vraiment exporter les données de cette periode?" icon="ui-icon-alert" />  
+                </p:commandButton>  
+
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">  
+                    <p:commandButton value="Oui" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>  
+                    <p:commandButton value="Non" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>       
+                </p:confirmDialog> 
+                
                 </h:panelGrid> 
             </p:panel>
         </h:panelGroup>
