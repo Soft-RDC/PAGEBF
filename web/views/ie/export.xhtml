@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./../../templates/showcaseLayout.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="centerContent">
+        <h:panelGroup layout="block" styleClass="centerContent">
+            <p:panel header="Choisir l'Unité pour laquelle voulez-vous exporter les données:">
+                <p:pickList value="#{unitpicklistbean.unit}" var="unit" 
+                            itemLabel="#{unit}" itemValue="#{unit}"></p:pickList>
+            </p:panel>
+            <p:panel header="Choisir la periode d'exportation de données:">
+                <h:panelGrid columns="2" style="width:40%">  
+                    <h:outputText value="Date debut" />  
+                    <h:outputText value="Date fin" />  
+                    <p:calendar effect="slideDown" id="startdate"/>   
+                    <p:calendar effect="slideDown" id="enddate"/>   
+                </h:panelGrid> 
+            </p:panel>
+            <p:panel>
+                <h:panelGrid columns="1" style="width:40%">  
+                    <p:commandButton type="button" value="Exporter les donnees" icon="ui-icon-check" style="margin:0"/>   
+                </h:panelGrid> 
+            </p:panel>
+        </h:panelGroup>
+
+
+    </ui:define>
+
+    <ui:define name="subModule">
+        subModule
+    </ui:define>
+
+</ui:composition>
