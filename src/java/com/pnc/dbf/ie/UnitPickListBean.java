@@ -26,7 +26,7 @@ import org.primefaces.model.DualListModel;
 @SessionScoped
 public class UnitPickListBean implements Serializable {
 
-    private DualListModel<String> unit;
+    private DualListModel<String> unit;//
     private DBConnection dbConnection = new DBConnection();
 
     public UnitPickListBean() {
