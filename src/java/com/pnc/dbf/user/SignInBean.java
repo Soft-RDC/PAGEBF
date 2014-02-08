@@ -15,7 +15,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-@ManagedBean(name = "signInBean", eager = true)
+@ManagedBean
 @SessionScoped
 
 public class SignInBean implements Serializable {
@@ -25,9 +25,10 @@ public class SignInBean implements Serializable {
     private String firstname, familyname;
     private String profile;
     private int idUser, idProfile;
-    private DBConnection dbConnection = new DBConnection();
+    private DBConnection dbConnection;
 
     public SignInBean() {
+        dbConnection = new DBConnection();
     }
 
     public String logInUser() {
